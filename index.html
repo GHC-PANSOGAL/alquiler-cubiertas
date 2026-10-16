@@ -28,7 +28,7 @@
     {"@type":"Question","name":"¿Qué ocurre si mi cubierta necesita reparaciones?","acceptedAnswer":{"@type":"Answer","text":"Antes de formalizar el acuerdo se evalúan su estado y las necesidades de mantenimiento. El contrato define las responsabilidades sobre reparaciones, impermeabilización, daños y conservación de la cubierta."}},
     {"@type":"Question","name":"¿Qué pasa si vendo la nave industrial?","acceptedAnswer":{"@type":"Answer","text":"Depende de las condiciones contractuales y de las cláusulas de transmisión del inmueble. Este aspecto se explica en la propuesta y queda recogido en el contrato."}},
     {"@type":"Question","name":"¿Todas las cubiertas son aptas para instalar placas solares?","acceptedAnswer":{"@type":"Answer","text":"No. Hay que estudiar la superficie disponible, la estructura, el estado de la cubierta, la ubicación y otros condicionantes técnicos, urbanísticos y administrativos."}},
-    {"@type":"Question","name":"¿Puedo consumir la energía generada?","acceptedAnswer":{"@type":"Answer","text":"Según la estructura del proyecto y las condiciones acordadas, se puede estudiar si existe una opción compatible con tus necesidades energéticas."}},
+    {"@type":"Question","name":"¿Puedo consumir la energía generada?","acceptedAnswer":{"@type":"Answer","text":"Según la estructura del proyecto y las condiciones acordadas, se puede estudiar si existe una opción compatible con tus necesidades energéticas. También, si lo deseas, podemos hacer una instalación solar exclusiva para los consumos de tu empresa."}},
     {"@type":"Question","name":"¿Cómo puedo saber si mi nave interesa a Pansogal?","acceptedAnswer":{"@type":"Answer","text":"Completa el formulario con la ubicación, la superficie aproximada y tus datos de contacto. El equipo hará una primera valoración y te dirá si procede un estudio más detallado."}}
   ]
 }
@@ -116,6 +116,8 @@ section[id]{scroll-margin-top:96px}
 .hero-copy h1 em{font-style:normal;color:var(--pg-lime)}
 .hero-h1{font-size:clamp(1.7rem,3.1vw,3rem);line-height:1.05}
 .hero-h1 span{display:block;white-space:nowrap}
+.ast{font-size:.45em;vertical-align:super;line-height:0;margin-left:2px}
+.hero-foot{font-size:.78rem;color:var(--pg-grey)}
 @media (max-width:900px){.hero-h1{font-size:clamp(1.45rem,7.2vw,3.2rem)}}
 .hero-copy{min-width:0}
 .hero-claim{font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:500;color:var(--pg-white);margin-top:-8px}
@@ -137,6 +139,32 @@ section[id]{scroll-margin-top:96px}
   .hero-media{min-height:0;width:100%}
 }
 @media (max-width:360px){.nav .btn{padding:0 10px;font-size:.66rem}.nav-logo img{height:18px}}
+
+
+/* ---------- Movimiento ---------- */
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
+.hero-media img{animation:kenburns 22s ease-in-out infinite alternate;transform-origin:60% 40%}
+@keyframes heroIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-copy>*{animation:heroIn .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy>*:nth-child(1){animation-delay:.05s}.hero-copy>*:nth-child(2){animation-delay:.15s}.hero-copy>*:nth-child(3){animation-delay:.3s}
+.hero-copy>*:nth-child(4){animation-delay:.4s}.hero-copy>*:nth-child(5){animation-delay:.5s}.hero-copy>*:nth-child(6){animation-delay:.6s}
+.hero-copy>*:nth-child(n+7){animation-delay:.7s}
+.hero-h1 span{animation:heroIn .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-h1 span:nth-child(2){animation-delay:.25s}.hero-h1 span:nth-child(3){animation-delay:.45s}
+.ticker{margin:22px 0 0;overflow:hidden;border-block:1px solid var(--pg-line);background:var(--pg-white);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:flex;width:max-content;animation:ticker 38s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-list{display:flex;list-style:none;margin:0;padding:0}
+.ticker-list li{display:flex;align-items:center;gap:18px;padding:14px 18px;font-size:clamp(.95rem,1.4vw,1.1rem);font-weight:500;white-space:nowrap;color:var(--pg-dark)}
+.ticker-list li::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--pg-lime);box-shadow:0 0 0 2px var(--pg-dark);margin-left:18px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.card .ico{transition:transform .35s ease,background .35s ease}
+.card:hover .ico{transform:rotate(-8deg) scale(1.08)}
+.card{transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.calc-out .big strong{transition:transform .2s ease}
+.calc-out .big.bump strong{transform:scale(1.04)}
+@media (prefers-reduced-motion:reduce){.hero-media img,.ticker-track,.hero-copy>*,.hero-h1 span{animation:none!important}}
 
 /* ---------- Propuesta de valor ---------- */
 .value-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:start}
@@ -193,6 +221,7 @@ section[id]{scroll-margin-top:96px}
 .calc-type input:focus-visible+span{outline:3px solid var(--pg-lime);outline-offset:2px}
 .calc-out{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
 .calc-out>div{border:1px solid var(--pg-line-dark);border-radius:var(--radius-s);padding:14px}
+.calc-out>div:only-of-type{}
 .calc-out .big{grid-column:1/-1;background:var(--pg-lime);color:var(--pg-dark);border-color:var(--pg-lime)}
 .calc-out .k{display:block;font-size:.8rem;opacity:.85}
 .calc-out strong{display:block;margin-top:4px;font-size:1.15rem;font-weight:800;color:var(--pg-white)}
@@ -227,6 +256,7 @@ section[id]{scroll-margin-top:96px}
 /* ---------- Energía de proximidad ---------- */
 .local{background:var(--pg-dark);color:var(--pg-cream)}
 .local h2{color:var(--pg-white)}
+.local-sub{margin-top:14px;font-size:clamp(1.15rem,1.8vw,1.4rem);font-weight:500;color:var(--pg-lime)}
 .local .section-head p{color:var(--pg-cream)}
 .local-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
 .local-points{list-style:none;padding:0;margin:0;display:grid;gap:14px}
@@ -405,9 +435,9 @@ section[id]{scroll-margin-top:96px}
     <div class="hero-card">
       <div class="hero-copy">
         <span class="eyebrow">Alquiler de cubiertas industriales</span>
-        <h1 id="h1" class="hero-h1"><span>Alquila tu cubierta</span> <span><em>genera ingresos</em></span> <span><em>hasta 30 años</em></span></h1>
+        <h1 id="h1" class="hero-h1"><span>Alquila tu cubierta</span> <span><em>genera ingresos</em></span> <span><em>30 años<sup class="ast">*</sup></em></span></h1>
         <p class="hero-claim">Rápido, seguro y sin complicaciones.</p>
-        <p class="lead">Transformamos grandes cubiertas industriales en instalaciones solares. Tú aportas el espacio y recibes una remuneración anual, sin asumir la inversión inicial del proyecto según las condiciones acordadas.</p>
+        <p class="lead">Transformamos cubiertas industriales en instalaciones solares. Tú aportas el espacio y recibes una remuneración anual. Sin hacer ninguna inversión por tu parte, nosotros nos ocupamos de todo.</p>
         <ul class="chips" aria-label="Claves del acuerdo">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Contratos de hasta 30 años</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Sin inversión inicial para el propietario</li>
@@ -418,6 +448,7 @@ section[id]{scroll-margin-top:96px}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="#como-funciona" data-cta="hero_secundario">Descubre cómo funciona</a>
         </div>
+        <p class="hero-foot">* Contratos de hasta 30 años, según las condiciones de cada proyecto.</p>
         <p class="trust-note">Analizamos las características de tu cubierta para determinar su potencial y las condiciones de un posible acuerdo.</p>
       </div>
       <div class="hero-media">
@@ -428,6 +459,18 @@ section[id]{scroll-margin-top:96px}
     </div>
   </div>
 </section>
+<!-- Cinta de ventajas en movimiento -->
+<div class="ticker" aria-label="Ventajas del alquiler de cubierta">
+  <div class="ticker-track">
+    <ul class="ticker-list">
+      <li>Sin inversión por tu parte</li><li>Ingresos cada año</li><li>Contratos de hasta 30 años</li><li>Estudio gratuito</li><li>Instalación y mantenimiento incluidos</li><li>Equipo propio desde hace 20 años</li><li>A Coruña · Vigo · Madrid</li>
+    </ul>
+    <ul class="ticker-list" aria-hidden="true">
+      <li>Sin inversión por tu parte</li><li>Ingresos cada año</li><li>Contratos de hasta 30 años</li><li>Estudio gratuito</li><li>Instalación y mantenimiento incluidos</li><li>Equipo propio desde hace 20 años</li><li>A Coruña · Vigo · Madrid</li>
+    </ul>
+  </div>
+</div>
+
 
 <!-- ======================= 2. PROPUESTA DE VALOR ======================= -->
 <section class="section" aria-labelledby="h-valor">
@@ -447,17 +490,17 @@ section[id]{scroll-margin-top:96px}
       <article class="card reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M4 4l16 17"/></svg></div>
         <h3>Sin inversión inicial</h3>
-        <p>El proyecto se estructura para que no tengas que financiar la instalación, de acuerdo con las condiciones contractuales.</p>
+        <p>Sin que tengas que hacer ningún tipo de inversión por tu parte y sin que tengas que ocuparte de ningún trámite: nosotros nos encargamos de todo y tú solo cobras tu alquiler de manera segura cada año.</p>
       </article>
       <article class="card reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
         <h3>Gestión integral</h3>
-        <p>El proyecto contempla el análisis técnico, la instalación y el mantenimiento que se establezcan en el contrato.</p>
+        <p>Nosotros nos encargamos de la instalación y del mantenimiento del sistema solar; tú te despreocupas de todo. Todo queda recogido en un contrato claro, con las responsabilidades de cada parte.</p>
       </article>
       <article class="card reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></div>
         <h3>Un activo que genera valor</h3>
-        <p>Aprovecha una superficie infrautilizada para impulsar un proyecto energético de larga duración.</p>
+        <p>Tu cubierta solo te da gastos de mantenimiento; con nuestro alquiler recibirás un ingreso recurrente durante 30 años<sup class="ast">*</sup>.</p>
       </article>
     </div>
   </div>
@@ -504,37 +547,30 @@ section[id]{scroll-margin-top:96px}
       <form class="calc-form" id="calc" onsubmit="return false" aria-describedby="calc-hyp">
         <div class="calc-row">
           <label for="c-sup">Superficie de cubierta</label>
-          <div class="calc-num"><input id="c-sup" type="number" inputmode="numeric" min="400" max="100000" step="100" value="600" aria-describedby="c-sup-u"><span id="c-sup-u">m²</span></div>
+          <div class="calc-num"><input id="c-sup" type="number" inputmode="numeric" min="0" max="1000000" step="10" value="0" aria-describedby="c-sup-u"><span id="c-sup-u">m²</span></div>
         </div>
-        <input id="c-range" type="range" min="400" max="40000" step="100" value="600" aria-label="Superficie de cubierta en metros cuadrados">
-        <fieldset class="calc-type"><legend>Tipo de cubierta</legend>
-          <label><input type="radio" name="c-tipo" value="inclinada" checked><span>Inclinada (chapa / panel sándwich)</span></label>
-          <label><input type="radio" name="c-tipo" value="plana"><span>Plana (hormigón / tela)</span></label>
-        </fieldset>
+        <input id="c-range" type="range" min="0" max="2000" step="10" value="0" aria-label="Superficie de cubierta en metros cuadrados">
         <div class="calc-out" id="calc-out" aria-live="polite">
           <div class="big">
             <span class="k" id="o-year-k">Remuneración anual estimada</span>
             <strong><span id="o-year-pre">hasta</span> <span id="o-year">—</span><span class="per"> /año</span></strong>
             <span class="badge" id="o-badge" hidden>Proyecto especial</span>
           </div>
-          <div><span class="k">Potencia instalable estimada</span><strong id="o-kwp">—</strong></div>
-          <div><span class="k">En un contrato de hasta 30 años</span><strong><span id="o-total-pre">hasta</span> <span id="o-total">—</span></strong></div>
+          <div style="grid-column:1/-1"><span class="k">En un contrato de 30 años<sup class="ast">*</sup></span><strong><span id="o-total-pre">hasta</span> <span id="o-total">—</span></strong></div>
         </div>
         <p class="calc-warn" id="o-warn" hidden></p>
         <div class="calc-special" id="o-special" hidden>
           <strong>Tu proyecto es especial.</strong>
-          <span>Tu cubierta supera el máximo que calcula esta herramienta (5.000 € al año). Déjanos tus datos y te preparamos un estudio a medida.</span>
+          <span>Con más de 1.000 m² tu cubierta necesita un estudio a medida. Déjanos tus datos y te preparamos una propuesta personalizada.</span>
         </div>
       </form>
       <a class="btn btn-primary" href="#estudio" data-cta="calculadora" id="calc-cta">Recibir mi estudio gratuito</a>
       <p class="calc-legal">Estimación orientativa y no vinculante. No constituye una oferta ni un compromiso de contratación. Las condiciones reales se fijan tras el estudio técnico y en el contrato.</p>
       <details class="calc-hyp" id="calc-hyp"><summary>Cómo calculamos</summary>
         <ul>
-          <li>Superficie aprovechable: 70 % en cubierta inclinada y 65 % en cubierta plana (descontando pasillos, lucernarios, perímetros y sombras).</li>
-          <li>Densidad de instalación: 1 kWp por cada 5 m² aprovechables en inclinada (coplanar) y por cada 7 m² en plana (estructura con inclinación).</li>
-          <li>Remuneración de referencia: hasta 50 € por kWp instalado y año.</li>
-          <li>La herramienta muestra importes de hasta 5.000 € al año. Por encima de esa cifra, el proyecto se estudia a medida.</li>
-          <li>El resultado depende del estudio técnico, la estructura y el estado de la cubierta, la ubicación, la conexión a red, las autorizaciones y las condiciones del contrato.</li>
+          <li>Remuneración de referencia: 5 € por m² de cubierta y año, hasta 1.000 m² (máximo 5.000 € al año).</li>
+          <li>Con más de 1.000 m², el proyecto se considera especial y se estudia a medida.</li>
+          <li>El resultado final depende del estudio técnico, la superficie útil, la estructura y el estado de la cubierta, la ubicación, la conexión a red, las autorizaciones y las condiciones del contrato.</li>
         </ul>
       </details>
     </aside>
@@ -546,7 +582,7 @@ section[id]{scroll-margin-top:96px}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Qué buscamos</span>
-      <h2 id="h-types" style="margin-top:14px">Buscamos grandes cubiertas con potencial solar</h2>
+      <h2 id="h-types" style="margin-top:14px">Buscamos una cubierta con potencial solar, no importa su tamaño</h2>
     </div>
     <div class="types">
       <article class="type reveal">
@@ -581,7 +617,8 @@ section[id]{scroll-margin-top:96px}
   <div class="wrap local-grid">
     <div class="reveal">
       <span class="eyebrow" style="color:var(--pg-cream)">Energía de proximidad</span>
-      <h2 id="h-local" style="margin-top:14px">Tu cubierta puede llevar energía solar a las empresas y hogares de tu entorno</h2>
+      <h2 id="h-local" style="margin-top:14px">¿Para qué queremos tu cubierta?</h2>
+      <p class="local-sub">Tu cubierta puede llevar energía solar a las empresas y hogares de tu entorno.</p>
       <p class="lead" style="margin-top:18px">La normativa de autoconsumo colectivo permite que la energía generada en una cubierta industrial se comparta con consumidores cercanos a través de la red. Tu nave puede convertirse en el punto de generación de un proyecto de energía local.</p>
       <ul class="local-points" style="margin-top:28px">
         <li><span class="n">1</span><div><b>Se genera en tu cubierta</b>Los paneles producen energía renovable sobre una superficie que hoy no aporta ingresos.</div></li>
@@ -645,9 +682,9 @@ section[id]{scroll-margin-top:96px}
       <h2 id="h-why" style="margin-top:14px">Un proyecto a largo plazo necesita un socio que esté a la altura</h2>
       <!-- Cifras tomadas de pansogal.com (inicio y /empresas/). Revisar antes de publicar. -->
       <div class="stats">
-        <div class="stat"><strong>20 años</strong><span>desarrollando proyectos de energías renovables</span></div>
-        <div class="stat"><strong>+50</strong><span>profesionales en equipo propio, sin intermediarios</span></div>
-        <div class="stat"><strong>3 sedes</strong><span>A Coruña, Vigo y Madrid, con servicio en toda la Península</span></div>
+        <div class="stat"><strong data-count="20" data-suffix=" años">20 años</strong><span>desarrollando proyectos de energías renovables</span></div>
+        <div class="stat"><strong data-count="50" data-prefix="+">+50</strong><span>profesionales en equipo propio, sin intermediarios</span></div>
+        <div class="stat"><strong data-count="3" data-suffix=" sedes">3 sedes</strong><span>A Coruña, Vigo y Madrid, con servicio en toda la Península</span></div>
         <div class="stat"><strong>ISO 9001</strong><span>sistema de gestión de la calidad certificado</span></div>
       </div>
       <ul class="checks">
@@ -680,7 +717,7 @@ section[id]{scroll-margin-top:96px}
       <details><summary>¿Qué ocurre si mi cubierta necesita reparaciones?</summary><div class="ans"><p>Antes de formalizar el acuerdo se evalúan su estado y las necesidades de mantenimiento. El contrato define las responsabilidades sobre reparaciones, impermeabilización, daños y conservación de la cubierta.</p></div></details>
       <details><summary>¿Qué pasa si vendo la nave industrial?</summary><div class="ans"><p>Depende de las condiciones contractuales y de las cláusulas de transmisión del inmueble. Este aspecto se explica en la propuesta y queda recogido en el contrato.</p></div></details>
       <details><summary>¿Todas las cubiertas son aptas para instalar placas solares?</summary><div class="ans"><p>No. Hay que estudiar la superficie disponible, la estructura, el estado de la cubierta, la ubicación y otros condicionantes técnicos, urbanísticos y administrativos.</p></div></details>
-      <details><summary>¿Puedo consumir la energía generada?</summary><div class="ans"><p>Según la estructura del proyecto y las condiciones acordadas, se puede estudiar si existe una opción compatible con tus necesidades energéticas.</p></div></details>
+      <details><summary>¿Puedo consumir la energía generada?</summary><div class="ans"><p>Según la estructura del proyecto y las condiciones acordadas, se puede estudiar si existe una opción compatible con tus necesidades energéticas. También, si lo deseas, podemos hacer una instalación solar exclusiva para los consumos de tu empresa.</p></div></details>
       <details><summary>¿Cómo puedo saber si mi nave interesa a Pansogal?</summary><div class="ans"><p>Completa el <a href="#estudio">formulario</a> con la ubicación, la superficie aproximada y tus datos de contacto. El equipo hará una primera valoración y te dirá si procede un estudio más detallado.</p></div></details>
     </div>
   </div>
@@ -859,6 +896,7 @@ const LANDING_CONFIG = {
 
 (function(){
   document.body.classList.remove('no-js');
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---- Analítica: solo empuja eventos si existe dataLayer (GTM gestiona el consentimiento) ---- */
@@ -867,46 +905,49 @@ const LANDING_CONFIG = {
 
 
   /* ---- Calculadora orientativa ---- */
-  const CALC = { eurPorKwp: 50, topeAnual: 5000, anos: 30, util:{inclinada:.70, plana:.65}, m2PorKwp:{inclinada:5, plana:7}, maxKwpProximidad:5000 };
+  const CALC = { eurPorM2: 5, m2Max: 1000, topeAnual: 5000, anos: 30, rangeMax: 2000 };
   const cSup=document.getElementById('c-sup'), cRange=document.getElementById('c-range');
   const fmt={format:function(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }};
-  const eur=function(n,r){ r=r||100; return fmt.format(Math.round(n/r)*r)+' €'; };
+  const eur=function(n,r){ r=r||10; return fmt.format(Math.round(n/r)*r)+' €'; };
   let calcTracked=false, lastCalc=null;
   function calc(src){
     let m2=parseFloat(cSup.value);
-    if(src==='range'){ m2=parseFloat(cRange.value); cSup.value=m2; } else if(!isNaN(m2)){ cRange.value=Math.min(Math.max(m2,400),40000); }
-    const warn=document.getElementById('o-warn');
-    if(isNaN(m2)||m2<400){ ['o-kwp','o-year','o-total'].forEach(function(id){document.getElementById(id).textContent='—';}); document.getElementById('o-special').hidden=true; document.getElementById('o-badge').hidden=true; warn.hidden=false; warn.textContent='Introduce una superficie de al menos 400 m².'; lastCalc=null; return; }
-    const tipo=document.querySelector('input[name="c-tipo"]:checked').value;
-    const kwp=m2*CALC.util[tipo]/CALC.m2PorKwp[tipo];
-    const year=kwp*CALC.eurPorKwp;
-    const special = year > CALC.topeAnual;
+    if(src==='range'){ m2=parseFloat(cRange.value); cSup.value=m2; } else if(!isNaN(m2)){ cRange.value=Math.min(Math.max(m2,0),CALC.rangeMax); }
+    if(isNaN(m2)||m2<0) m2=0;
+    const year=m2*CALC.eurPorM2;
+    const special = m2 > CALC.m2Max || year > CALC.topeAnual;
     const shown = Math.min(year, CALC.topeAnual);
-    document.getElementById('o-kwp').textContent=fmt.format(Math.round(kwp))+' kWp';
-    document.getElementById('o-year').textContent=eur(shown);
-    document.getElementById('o-year-pre').textContent = special ? '' : 'hasta';
-    document.getElementById('o-year').textContent = special ? eur(CALC.topeAnual)+' o más' : eur(shown);
-    document.getElementById('o-total-pre').textContent = special ? '' : 'hasta';
-    document.getElementById('o-total').textContent = special ? eur(CALC.topeAnual*CALC.anos,1000)+' o más' : eur(shown*CALC.anos,1000);
+    document.getElementById('o-year-pre').textContent = special ? '' : (m2>0?'hasta':'');
+    tweenText(document.getElementById('o-year'), special ? CALC.topeAnual : shown, special ? ' € o más' : ' €', 10);
+    document.getElementById('o-total-pre').textContent = special ? '' : (m2>0?'hasta':'');
+    tweenText(document.getElementById('o-total'), special ? CALC.topeAnual*CALC.anos : shown*CALC.anos, special ? ' € o más' : ' €', 100);
     document.getElementById('o-badge').hidden = !special;
     document.getElementById('o-special').hidden = !special;
-    warn.hidden = true;
-    if(special && !lastCalc?.proyecto_especial) track('calculator_special');
-    lastCalc={m2:m2,tipo:tipo,kwp:Math.round(kwp),eur_anual_mostrado:Math.round(shown),proyecto_especial:special};
+    document.getElementById('o-warn').hidden = true;
+    if(special && !(lastCalc&&lastCalc.proyecto_especial)) track('calculator_special');
+    lastCalc = m2>0 ? {m2:m2,eur_anual_mostrado:Math.round(shown),proyecto_especial:special} : null;
     updateEstimateChip();
     if(!calcTracked && src){ calcTracked=true; track('calculator_use'); }
+  }
+  function tweenText(el,to,suffix,round){
+    const from = +(el.dataset.v||0); el.dataset.v=to;
+    const fmtv=function(v){ return fmt.format(Math.round(v/round)*round)+suffix; };
+    if(reduceMotion||from===to){ el.textContent=fmtv(to); return; }
+    const big=el.closest('.big'); if(big){ big.classList.add('bump'); setTimeout(function(){big.classList.remove('bump');},200); }
+    const t0=performance.now(), dur=450; cancelAnimationFrame(+el.dataset.raf||0);
+    (function step(t){ const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      el.textContent=fmtv(from+(to-from)*e); if(k<1) el.dataset.raf=requestAnimationFrame(step); })(t0);
   }
   function updateEstimateChip(){
     const chip=document.getElementById('f-est'); if(!chip) return;
     if(!lastCalc){ chip.hidden=true; return; }
     chip.hidden=false;
     document.getElementById('f-est-txt').textContent = lastCalc.proyecto_especial
-      ? fmt.format(lastCalc.m2)+' m² · '+fmt.format(lastCalc.kwp)+' kWp · proyecto especial (más de 5.000 €/año)'
-      : fmt.format(lastCalc.m2)+' m² · '+fmt.format(lastCalc.kwp)+' kWp · hasta '+eur(lastCalc.eur_anual_mostrado)+'/año';
+      ? fmt.format(lastCalc.m2)+' m² · proyecto especial (más de 1.000 m²)'
+      : fmt.format(lastCalc.m2)+' m² · hasta '+eur(lastCalc.eur_anual_mostrado)+'/año';
   }
   cSup.addEventListener('input',function(){calc('num');});
   cRange.addEventListener('input',function(){calc('range');});
-  document.querySelectorAll('input[name="c-tipo"]').forEach(function(r){ r.addEventListener('change',function(){calc('tipo');}); });
   calc();
   // Al pasar al formulario, preselecciona el tramo de superficie
   document.getElementById('calc-cta').addEventListener('click',function(){
@@ -914,6 +955,20 @@ const LANDING_CONFIG = {
     const v = m<1000?'<1000': m<3000?'1000-3000': m<=5000?'3000-5000':'>5000';
     const r=document.querySelector('input[name="superficie"][value="'+v+'"]'); if(r) r.checked=true;
   });
+
+
+  /* ---- Movimiento: contadores y cifras animadas ---- */
+  function countUp(el){
+    const end=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+    if(reduceMotion){ el.textContent=pre+end+suf; return; }
+    const t0=performance.now(), dur=1400;
+    (function step(t){ const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      el.textContent=pre+Math.round(end*e)+suf; if(k<1) requestAnimationFrame(step); })(t0);
+  }
+  if('IntersectionObserver' in window){
+    const co=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); co.unobserve(e.target);} }); },{threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(el){ co.observe(el); });
+  }
 
   /* ---- Revelado suave ---- */
   if('IntersectionObserver' in window){
